@@ -7,7 +7,7 @@ class Genre {
 
 	private function __construct($id, $omschrijving) {
 		$this->id = $id;
-		$this->omschrijving;
+		$this->omschrijving=$omschrijving;
 	}
 
 	public static function create($id, $omschrijving) {
