@@ -4,6 +4,7 @@ require_once("business/exemplaarservice.class.php");
 require_once("business/klantservice.class.php");
 require_once("business/gebruikerservice.class.php");
 require_once("business/uitleningservice.class.php");
+require_once("exceptions/LegeTabelException.class.php");
 $exemplarenLijst = ExemplaarService::getExemplaren();
 $gebruikersLijst = GebruikerService::getGebruikers();
 $klantenLijst = KlantService::getKlanten();
@@ -13,9 +14,15 @@ $uitleningenLijst = UitleningService::getUitleningen();
 if (isset($_GET["action"]) && $_GET["action"] == "zoek") {
 	$filmLijst = FilmService::getFilmsByNummer($_POST["exemplaarnummer"]);
 } else {
+	try {
 	$filmLijst = FilmService::getFilms();
+	include("presentation/toonfilms.php");
+	} catch (LegeTabelException $ex) {
+	Print("De tabel met films is leeg. Er zijn geen films te tonen.");
+	}
 }
-include("presentation/toonfilms.php");
+include("presentation/zoekopnummer.php");
+
 include("presentation/deletetitel.php");
 $exemplarenLijst = ExemplaarService::getExemplaren();
 include("presentation/deleteexemplaar.php");

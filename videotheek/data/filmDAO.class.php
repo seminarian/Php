@@ -11,12 +11,17 @@ require_once("entities/film.class.php");
 			// $sql = "select mvc_boeken.id as boekid, titel, genreid, omschrijving from mvc_boeken, mvc_genres where genreid = mvc_genres.id";
 			$resultSet = $dbh->query($sql);
 			// print_r($resultSet);
+			if ($resultSet->rowCount() > 0) {
+			// print("Result set rows: " . $resultSet->rowCount());
 				foreach($resultSet as $rij){
 					$film = New Film($rij["filmID"],$rij["titel"],$rij["afbeelding"]);
 					array_push($lijst,$film);
 				}
 				$dbh = null;
 				return $lijst;
+			} else {
+				Throw new LegeTabelException();
+			}
 		}
 
 		public static function getById($id) {
