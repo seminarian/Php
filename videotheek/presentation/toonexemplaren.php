@@ -1,19 +1,33 @@
-<!DOCTYPE HTML>
-<html lang="en-US">
-<head>
-	<meta charset="UTF-8">
-	<title>Lijst van alle exemplaren</title>
-</head>
-<body>
 	<h1>Lijst van alle exemplaren</h1>
-	<ul>
+	<table border="1">
+		<tr>
+			<th><b>Exemplaarnummer</b></th>
+			<th><b>Titel</b></th>
+			<th><b>Uitgeleend</b></th>
+		</tr>
 	<?php
-	foreach ($exemplarenLijst as $exemplaar) {
+	foreach($exemplarenLijst as $exemplaar) {
 	?>
-	<li><?php print($exemplaar->getId() . " " . $exemplaar->getFilmID() . " " . $exemplaar->getUitgeleend()); ?> </li>
+		<tr>
+			<td><?php print($exemplaar->getId()); ?></td>
+			<td><?php $film = FilmService::getFilmById($exemplaar->getFilmId());
+					print($film->getTitel());
+				 ?>
+			</td>
+			<td>
+				<?php if($exemplaar->getUitgeleend()) {
+						print("Ja");
+					} else {
+						print("Nee");
+					} ?>
+			</td>
+			<td>
+				<a href="deleteexemplaar.php?action=deleteexemplaar&id=<?php print($exemplaar->getId()); ?>">Verwijder</a>
+			</td>
+		</tr>
+
 	<?php
 	}
+	
 	?>
-	</ul>
-</body>
-</html>
+	</table>

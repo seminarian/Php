@@ -20,16 +20,19 @@
 			<td><?php $teller = 0;$exemplarenLijst = ExemplaarService::getExemplarenByFilmId($film->getId());
 				foreach($exemplarenLijst as $exemplaar) {
 				 	if(!$exemplaar->getUitgeleend()) {
-				 	print("<b>" . $exemplaar->getId() . "</b>");
+				 	print("<b>" . $exemplaar->getId() . " </b>");
 				 	$teller++;
 				 	} else {
-				 	print($exemplaar->getId());
+				 	print($exemplaar->getId() . " ");
 				 	}
 				}
 				 ?>
 			</td>
 			<td>
 				<?php print($teller); ?>
+			</td>
+			<td>
+				<a href="deletetitel.php?action=deletetitel&id=<?php print($film->getId()); ?>">Verwijder</a>
 			</td>
 		</tr>
 

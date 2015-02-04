@@ -5,6 +5,11 @@ class KlantService {
 		$klantenLijst = KlantDAO::getAll();
 		return $klantenLijst;
 	}
+
+	public static function getKlantById($id) {
+		$klant = KlantDAO::getKlantById($id);
+		return $klant;
+	}
 }
 
 ?>

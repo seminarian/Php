@@ -1,22 +1,46 @@
-<!DOCTYPE HTML>
-<html lang="en-US">
-<head>
-	<meta charset="UTF-8">
-	<title>Lijst van alle uitleningen</title>
-</head>
-<body>
-	<h1>Lijst van alle uitleningen</h1>
-	<ul>
+	<h1>Historiek van alle Uitleningen</h1>
+	<table border="1">
+		<tr>
+			<th><b>Id</b></th>
+			<th><b>KlantID</b></th>
+			<th><b>Klant Naam</b></th>
+			<th><b>ExemplaarID</b></th>
+			<th><b>Datum Uitlening</b></th>
+			<th><b>Periode</b></th>
+			<th><b>Teruggebracht</b></th>
+			<th><b>Datum Retour</b></th>
+		</tr>
 	<?php
-	foreach ($uitleningenLijst as $uitlening) {
+	foreach($uitleningenLijst as $uitlening) {
 	?>
-	<li><?php print($uitlening->getId() . " " . $uitlening->getKlantId() . " " . $uitlening->getDatumUitlening()); ?> </li>
+		<tr>
+			<td><?php print($uitlening->getId()); ?></td>
+			<td><?php print($uitlening->getKlantId());?></td>
+			<td><?php $klant = KlantService::getKlantById($uitlening->getKlantId());
+					print($klant->getVoornaam() . " " . $klant->getAchternaam());
+				 ?>
+			</td>
+			<td><?php print($uitlening->getExemplaarId());?></td>
+
+			<td><?php print($uitlening->getDatumUitlening());?></td>
+
+			<td><?php print($uitlening->getPeriode());?></td>
+			<td><?php 
+			if($uitlening->getTeruggebracht()) {
+				print("ja");
+			} else {
+				print("nee");
+			}
+			?></td>
+		<td><?php print($uitlening->getDatumRetour());?></td>
+		</tr>
+
 	<?php
 	}
+	
 	?>
-	</ul>
-</body>
-</html>
+	</table>
+
 
 
 

@@ -33,5 +33,47 @@ require_once("entities/exemplaar.class.php");
 				$dbh = null;
 				return $lijst;
 		}
+
+		public static function addExemplaar($exemplaarID, $filmID) {
+			$dbh = new PDO(DBConfig::$DB_CONNSTRING,DBConfig::$DB_USERNAME,DBConfig::$DB_PASSWORD);
+			$sql = "insert into exemplaren (exemplaarID,filmID) VALUES ('" . $exemplaarID . "','" . $filmID . "')";
+//INSERT INTO `films`(`filmID`, `titel`, `afbeelding`) VALUES (6,titel,afbeelding)
+		// insert into films (titel,afbeelding) VALUES ("Test","")
+			// print("sql:" . $sql);
+			print("Exemplaar toegevoegd.");
+			$dbh->exec($sql);
+			$dbh = null;
+		}
+
+		public static function deleteExemplaarByFilmId($filmID) {
+			$dbh = new PDO(DBConfig::$DB_CONNSTRING,DBConfig::$DB_USERNAME,DBConfig::$DB_PASSWORD);
+			$sql = "delete from exemplaren where filmID = " . $filmID;
+			$dbh->exec($sql);
+			$dbh = null;
+		}
+
+		public static function deleteExemplaar($exemplaarID) {
+			$dbh = new PDO(DBConfig::$DB_CONNSTRING,DBConfig::$DB_USERNAME,DBConfig::$DB_PASSWORD);
+			$sql = "delete from exemplaren where exemplaarID = " . $exemplaarID;
+			print($sql);
+			$dbh->exec($sql);
+			$dbh = null;
+		}
+
+		public static function huurFilm($exemplaarID) {
+			$dbh = new PDO(DBConfig::$DB_CONNSTRING,DBConfig::$DB_USERNAME,DBConfig::$DB_PASSWORD);
+			$sql = "update exemplaren set uitgeleend=1 where exemplaarID = " . $exemplaarID;
+			$dbh->exec($sql);
+			$dbh = null;
+		}
+
+		public static function retourFilm($exemplaarID) {
+			$dbh = new PDO(DBConfig::$DB_CONNSTRING,DBConfig::$DB_USERNAME,DBConfig::$DB_PASSWORD);
+			$sql = "update exemplaren set uitgeleend = 0 where exemplaarID = " . $exemplaarID;
+			$dbh->exec($sql);
+			$dbh = null;
+		}
+
+
 	}
 ?>

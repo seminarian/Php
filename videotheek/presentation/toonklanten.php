@@ -1,22 +1,37 @@
-<!DOCTYPE HTML>
-<html lang="en-US">
-<head>
-	<meta charset="UTF-8">
-	<title>Lijst van alle klanten</title>
-</head>
-<body>
-	<h1>Lijst van alle klanten</h1>
-	<ul>
+
+	<h1>Lijst van alle Klanten</h1>
+	<table border="1">
+		<tr>
+			<th><b>KlantID</b></th>
+			<th><b>Voornaam</b></th>
+			<th><b>Achternaam</b></th>
+			<th><b>Adres</b></th>
+			<th><b>Postcode</b></th>
+			<th><b>Plaats</b></th>
+			<th><b>Telefoonnummer</b></th>
+			<th><b>Emailadres</b></th>
+		</tr>
 	<?php
-	foreach ($klantenLijst as $klant) {
+	foreach($klantenLijst as $klant) {
 	?>
-	<li><?php print($klant->getVoornaam() . " " . $klant->getAchternaam() . " " . $klant->getTelefoonnummer()); ?> </li>
+		<tr>
+			<td><?php print($klant->getId()); ?></td>
+			<td><?php print($klant->getVoornaam());?></td>
+			<td><?php print($klant->getAchternaam());?></td>
+			<td><?php print($klant->getAdres());?></td>
+			<td><?php print($klant->getPostcode());?></td>
+			<td><?php print($klant->getPlaats());?></td>
+			<td><?php print($klant->getTelefoonnummer());?></td>
+			<td><?php print($klant->getEmailadres());?></td>
+			
+		</tr>
+
 	<?php
 	}
+	
 	?>
-	</ul>
-</body>
-</html>
+	</table>
+
 
 
 

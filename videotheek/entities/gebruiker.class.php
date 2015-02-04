@@ -5,6 +5,7 @@ class Gebruiker {
 	private $wachtwoord;
 
 	public function __construct($gebruikersID,$gebruikersnaam,$wachtwoord) {
+		$this->gebruikersID = $gebruikersID;
 		$this->gebruikersnaam = $gebruikersnaam;
 		$this->wachtwoord = $wachtwoord;
 	}

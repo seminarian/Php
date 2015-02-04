@@ -13,7 +13,7 @@ class Exemplaar {
 	public function getId() {
 		return $this->id;
 	}
-	public function getFilmID() {
+	public function getFilmId() {
 		return $this->filmID;
 	}
 	public function getUitgeleend() {

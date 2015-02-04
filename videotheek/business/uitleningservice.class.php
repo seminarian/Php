@@ -5,6 +5,14 @@ class UitleningService {
 		$uitleningenLijst = UitleningDAO::getAll();
 		return $uitleningenLijst;
 	}
+
+	public static function addUitlening($klantID,$exemplaarID,$datumuitlening,$periode) {
+		UitleningDAO::addUitlening($klantID,$exemplaarID,$datumuitlening,$periode);
+	}
+
+	public static function retour($exemplaarID,$datumretour) {
+		UitleningDAO::retour($exemplaarID,$datumretour);
+	}
 }
 
 ?>

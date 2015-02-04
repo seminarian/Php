@@ -13,6 +13,24 @@ class UitleningDAO {
 		}
 		return $lijst;
 	}
+
+	public static function addUitlening($klantID,$exemplaarID,$datumuitlening,$periode) {
+		$dbh = New PDO(DBConfig::$DB_CONNSTRING,DBConfig::$DB_USERNAME,DBConfig::$DB_PASSWORD);
+		// $sql = "insert into uitleningen (klantID,exemplaarID,datumuitlening,periode) values ('" . $klantID . "','" . $exemplaarID ."','" . $datumuitlening . "','" . $periode "')";
+		$sql = "insert into uitleningen (klantID,exemplaarID,datumuitlening,periode) VALUES ('" . $klantID . "','" . $exemplaarID . "','" . $datumuitlening . "','" . $periode ."')";
+		// print($sql);
+		$dbh->exec($sql);
+		$dbh=null;
+	}
+
+		public static function retour($exemplaarID,$datumretour) {
+		$dbh = New PDO(DBConfig::$DB_CONNSTRING,DBConfig::$DB_USERNAME,DBConfig::$DB_PASSWORD);
+		// $sql = "insert into uitleningen (klantID,exemplaarID,datumuitlening,periode) values ('" . $klantID . "','" . $exemplaarID ."','" . $datumuitlening . "','" . $periode "')";
+		$sql = "update uitleningen set teruggebracht = 1, datumretour = '" . $datumretour . "' where exemplaarID = " . $exemplaarID . " and teruggebracht = 0";
+		print($sql);
+		$dbh->exec($sql);
+		$dbh=null;
+	}
 }
 
 ?>

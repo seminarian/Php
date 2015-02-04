@@ -13,6 +13,17 @@ class KlantDAO {
 		}
 		return $lijst;
 	}
+
+	public static function getKlantById($id) {
+		$dbh = New PDO(DBConfig::$DB_CONNSTRING,DBConfig::$DB_USERNAME,DBConfig::$DB_PASSWORD);
+		$sql = "select * from klanten where klantID = " . $id;
+		$resultSet = $dbh->query($sql);
+		$rij = $resultSet->fetch();
+		$klant = New Klant($rij["klantID"],$rij["voornaam"],$rij["achternaam"],$rij["adres"],$rij["postcode"],$rij["plaats"],$rij["telefoonnummer"],$rij["emailadres"]);
+		$dbh=null;
+		return $klant;
+
+	}
 }
 
 ?>
