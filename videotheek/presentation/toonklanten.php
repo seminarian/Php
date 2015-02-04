@@ -1,4 +1,4 @@
-
+<div id="toonklanten">
 	<h1>Lijst van alle Klanten</h1>
 	<table border="1">
 		<tr>
@@ -31,6 +31,7 @@
 	
 	?>
 	</table>
+</div>
 
 
 

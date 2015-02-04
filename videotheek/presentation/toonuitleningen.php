@@ -1,3 +1,4 @@
+<div id="toonuitleningen">
 	<h1>Historiek van alle Uitleningen</h1>
 	<table border="1">
 		<tr>
@@ -40,8 +41,7 @@
 	
 	?>
 	</table>
-
-
+</div>
 
 
 

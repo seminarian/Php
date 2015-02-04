@@ -1,3 +1,4 @@
+<div id="toongebruikers">
 	<h1>Lijst van alle gebruikers</h1>
 	<table border="1">
 		<tr>
@@ -19,6 +20,5 @@
 	
 	?>
 	</table>
-
-
+</div>
 

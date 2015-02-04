@@ -1,10 +1,4 @@
-<!DOCTYPE HTML>
-<html lang="en-US">
-<head>
-	<meta charset="UTF-8">
-	<title>Lijst van alle films</title>
-</head>
-<body>
+<div id="toonfilms">
 	<h1>Lijst van alle films</h1>
 	<table border="1">
 		<tr>
@@ -42,9 +36,7 @@
 	?>
 	</table>
 	<?php include("presentation/zoekopnummer.php"); ?>
-</body>
-</html>
-
+</div>
 
 
 

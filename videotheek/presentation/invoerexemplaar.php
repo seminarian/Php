@@ -1,3 +1,4 @@
+<div id="invoerexemplaar">
 <h1>Voer een nieuw exemplaar in</h1>
 <form method="post" action="invoerexemplaar.php?action=invoerexemplaar">
 	<label>Kies een titel</label>
@@ -13,4 +14,5 @@
 
 	<label>Geef een exemplaarnummer</label><input type="text" name="exemplaarID">
 	<input type="submit">
-</form>	
+</form>
+</div>

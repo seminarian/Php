@@ -1,3 +1,4 @@
+<div id="leenuit">
 <h1>Leen film uit</h1>
 <form action="leenuit.php?action=leenuit" method="post">
 	<label>Exemplaar nummer:</label><input type="text" name="exemplaarnummer">
@@ -13,3 +14,4 @@
 	<label>Periode:</label><input type="text" name="periode" value="5">
 	<input type="submit" value="Leen uit">
 </form>
+</div>

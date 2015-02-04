@@ -1,3 +1,4 @@
+<div id="toonexemplaren">
 	<h1>Lijst van alle exemplaren</h1>
 	<table border="1">
 		<tr>
@@ -31,3 +32,4 @@
 	
 	?>
 	</table>
+</div>
