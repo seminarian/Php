@@ -6,4 +6,9 @@ class GebruikerService {
 		$gebruikersLijst = GebruikerDAO::getAllGebruikers();
 		return $gebruikersLijst;
 	}
+
+	public static function checkLogin($gebruikersnaam,$wachtwoord) {
+		$ingelogd = GebruikerDAO::checkLogin($gebruikersnaam,$wachtwoord);
+		return $ingelogd;
+	}
 }

@@ -11,7 +11,7 @@ require_once("entities/film.class.php");
 			// $sql = "select mvc_boeken.id as boekid, titel, genreid, omschrijving from mvc_boeken, mvc_genres where genreid = mvc_genres.id";
 			$resultSet = $dbh->query($sql);
 			// print_r($resultSet);
-			if ($resultSet->rowCount() > 0) {
+			if ($resultSet && $resultSet->rowCount() > 0) {
 			// print("Result set rows: " . $resultSet->rowCount());
 				foreach($resultSet as $rij){
 					$film = New Film($rij["filmID"],$rij["titel"],$rij["afbeelding"]);
@@ -38,18 +38,22 @@ require_once("entities/film.class.php");
 			$dbh = new PDO(DBConfig::$DB_CONNSTRING,DBConfig::$DB_USERNAME,DBConfig::$DB_PASSWORD);
 			$sql = "select filmID, titel, afbeelding from films where filmID = " . $id;
 			$resultSet = $dbh->query($sql);
+			if ($resultSet) {
 			foreach($resultSet as $rij){
 				$film = New Film($rij["filmID"],$rij["titel"],$rij["afbeelding"]);
 				array_push($lijst,$film);
 			}
 			$dbh = null;
 			return $lijst;
+			} else {
+				Throw new VerkeerdIdException();
+			}
 		}
 
 		public static function getByTitel($titel) {
 			$lijst = array();
 			$dbh = new PDO(DBConfig::$DB_CONNSTRING,DBConfig::$DB_USERNAME,DBConfig::$DB_PASSWORD);
-			$sql = "select filmID, titel, afbeelding from films where titel = " . $titel;
+			$sql = "select filmID, titel, afbeelding from films where titel = '" . $titel . "'";
 			$resultSet = $dbh->query($sql);
 			foreach($resultSet as $rij){
 				$film = New Film($rij["filmID"],$rij["titel"],$rij["afbeelding"]);
@@ -64,10 +68,14 @@ require_once("entities/film.class.php");
 			$dbh = new PDO(DBConfig::$DB_CONNSTRING,DBConfig::$DB_USERNAME,DBConfig::$DB_PASSWORD);
 			$sql = "select filmID from exemplaren where exemplaarID = " . $nummer;
 			$resultSet = $dbh->query($sql);
+			if($resultSet && $resultSet->rowcount()>0) {
 			$exemplaar = $resultSet->fetch();
 			$lijst = FilmDAO::getByIdInList($exemplaar["filmID"]);
 			$dbh = null;
 			return $lijst;
+			} else {
+				Throw new VerkeerdIdException();
+			}
 		}
 
 
@@ -78,6 +86,10 @@ require_once("entities/film.class.php");
 //INSERT INTO `films`(`filmID`, `titel`, `afbeelding`) VALUES (6,titel,afbeelding)
 		// insert into films (titel,afbeelding) VALUES ("Test","")
 			$dbh->exec($sql);
+			$id = $dbh->lastInsertId();
+			if($id == 0) {
+				Throw new InsertFailException();
+			}
 		}
 
 		public static function deleteFilm($filmID) {

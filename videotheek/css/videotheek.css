@@ -1,0 +1,10 @@
+
+p.error {
+	background-color:red;
+	color:white;
+}
+
+p.good {
+	background-color:green;
+	color:white;
+}

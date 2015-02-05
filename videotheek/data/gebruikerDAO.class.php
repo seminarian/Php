@@ -16,5 +16,16 @@ require_once("entities/gebruiker.class.php");
 				$dbh = null;
 				return $lijst;
 		}
+
+		public static function checkLogin($gebruikersnaam,$wachtwoord) {
+			$dbh = new PDO(DBConfig::$DB_CONNSTRING,DBConfig::$DB_USERNAME,DBConfig::$DB_PASSWORD);
+			$sql = "select gebruikersID, gebruikersnaam, wachtwoord from gebruikers where gebruikersnaam = '" . $gebruikersnaam . "' and wachtwoord = '" . $wachtwoord . "'";
+			$resultSet = $dbh->query($sql);
+			if($resultSet->rowcount() >= 1) {
+				return true;
+			} else {
+			return false;
+		}
+		}
 	}
 ?>

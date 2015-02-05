@@ -1,4 +1,5 @@
 <?php
+include("presentation/header.html");
 require_once("business/uitleningservice.class.php");
 require_once("business/klantservice.class.php");
 require_once("business/exemplaarservice.class.php");

@@ -11,6 +11,7 @@ class ExemplaarService {
 	}
 
 	public function addExemplaar($exemplaarID,$filmID) {
+		
 		ExemplaarDAO::addExemplaar($exemplaarID,$filmID);
 	}
 
@@ -28,6 +29,14 @@ class ExemplaarService {
 
 	public function retourFilm($exemplaarID) {
 		ExemplaarDAO::retourFilm($exemplaarID);
+	}
+
+	public function checkByIdAanwezigStatus($exemplaarID) {
+		ExemplaarDAO::checkByIdAanwezigStatus($exemplaarID);
+	}
+
+	public function checkByIdUitgeleendStatus($exemplaarID) {
+		ExemplaarDAO::checkByIdUitgeleendStatus($exemplaarID);
 	}
 
 }

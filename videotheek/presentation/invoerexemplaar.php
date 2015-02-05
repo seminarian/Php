@@ -12,7 +12,7 @@
 	?>
 	</select>
 
-	<label>Geef een exemplaarnummer</label><input type="text" name="exemplaarID">
+	<label>Geef een exemplaarnummer</label><input type="text" value="0" name="exemplaarID">
 	<input type="submit">
 </form>
 </div>

@@ -1,12 +1,20 @@
+<?php
+session_start();
+if(!$_SESSION["ingelogd"]) {
+	header("location:login.php");
+	exit(0);
+}
+?>
 <!DOCTYPE HTML>
 <html lang="en-US">
 <head>
 	<meta charset="UTF-8">
 	<title>Videotheek Control Panel</title>
-	<link rel="stylesheet" type="text/css" href="css/home.css">
-</head>
+	<link rel="stylesheet" type="text/css" href="css/videotheek.css">
+	</head>
 <body>
-<div id="wrapper">
+<a href='index.php'>Terug naar hoofdmenu</a> <a href='login.php'>Afmelden</a>
+
 	
 
 
